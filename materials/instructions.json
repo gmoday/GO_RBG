@@ -1,0 +1,30 @@
+{
+  "General": [{
+    "title": "General Instructions",
+    "text": "<p> Throughout the experiment, you will see various instruction screens such as this one. Make sure to read each instruction screen carefully and completely. <br> </p> <p> Please do not write anything down, do not click the back button on your browser, and do not open other tabs or browsers during the experiment. </p> <p> Thank you for your participation! Click 'Continue' when you are ready to start the experiment. </p>"
+  },
+    {
+      "title": "Language Learning",
+      "text": "<br> <b> <center> Please Read All Instructions Carefully and Completely. </center> </b> <br> In the first part of the experiment, you will learn English-Swahili translations for words. Each Swahili word along with its English translation will be presented for 8 seconds. The Swahili word will be on the left side of the ':' and the English translation will be on the right side. <br><br> Please try your best to remember each Swahili word and the corresponding English definition. <br><br> Please do not write anything down, do not click the back button on your browser, and do not open other tabs or browsers during the experiment. <br><br> Click 'Continue' when you are ready to start the experiment."
+    }],
+
+  "Restudy" : {
+    "title": "Restudy Instructions",
+    "text": "<br> <b> <center> Please Read All Instructions Carefully and Completely. </center> </b> <br> In the next part of the experiment, you will restudy the Swahili words and their English definitions. Each Swahili word along with its English translation will be presented for 8 seconds. <br><br> Please try your best to remember each Swahili word and the corresponding English definition. <br><br> Please do not write anything down, do not click the back button on your browser, and do not open other tabs or browsers during the experiment. <br><br> Thank you for your participation! Click 'Continue' when you are ready to start the experiment."
+  },
+
+  "keyGrade" : {
+    "title": "Grading Instructions",
+    "text": "<br> <b> <center> Please Read All Instructions Completely and Carefully </center> </b> <br> In the next part of the experiment, you will grade a past participant's performance on a quiz that tested how well that person remembered the English translation to the Swahili word. </br> <br> Place your left index finger on the 'F' key and your right index finger on the 'J' key. </br> <br> Press the 'F' key when you think the English definition of the Swahili word is <b> INCORRECT. </b> </br> <br> Press the 'J' key when you think the English definition of the Swahili word is <b> CORRECT. </b> </br> <br> You will have 8 seconds to respond to each question. If you respond sooner than that the next question will appear. If you do not respond within 8 seconds then the next question will be presented. </br> <br> <b> Note: An answer key will be provided for you. </b>  <br> <br> Click 'Continue' when you are ready to begin."
+  },
+
+  "memGrade" : {
+    "title": "Grading Instructions",
+    "text": "<br> <b> <center> Please Read All Instructions Completely and Carefully </center> </b> <br> In the next part of the experiment, you will grade a past participant's performance on a quiz that tested how well that person remembered the English translation to the Swahili word. </br> <br> Place your left index finger on the 'F' key and your right index finger on the 'J' key. </br> <br> Press the 'F' key when you think the English definition of the Swahili word is <b> INCORRECT. </b> </br> <br> Press the 'J' key when you think the English definition of the Swahili word is <b> CORRECT. </b> </br> <br> You will have 8 seconds to respond to each question. If you respond sooner than that the next question will appear. If you do not respond within 8 seconds then the next question will be presented. </b>  <br> <br> Click 'Continue' when you are ready to begin."
+  },
+
+  "Recall" : {
+  "title": "Recall Instructions",
+  "text": "<br> <b> <center> Please Read All Instructions Completely and Carefully </center> </b> <br> In the next part of the experiment, your memory will be tested for the English translations of Swahili words. A Swahili word will be presented on the screen along with a box. Your job is to recall the English translation for the Swahili word by typing it into the available box. <br> <br> You will have to spend at least 15 seconds trying to recall the English translation. You may spend more than 15 seconds recalling if you want to. We realize that this is a difficult task, but try to recall to the best of your ability. When 15 seconds have passed, you may advance by pressing the 'Continue' button when you are ready.<br><br> Click 'Continue' when you are ready to begin."
+  }
+}

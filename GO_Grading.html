@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/jspsych.css">
+
+    <!-- jQuery first, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <!-- Then jsPsych -->
+    <script src="jsPsych/jspsych.js"></script>
+
+    <!-- Plugins -->
+    <script src="plugins/jspsych-single-stim.js"></script>
+    <script src="plugins/jspsych-text.js"></script>
+    <script src="plugins/pcllab-instructions.js"></script>
+    <script src="plugins/pcllab-short-answer.js"></script> 
+    <script src="plugins/pcllab-study-items.js"></script> 
+
+
+
+
+    <title>GO_RBG</title>
+</head>
+<body>
+<div id="experiment_container" class="container-fluid"></div>
+</body>
+
+<script>
+
+    // Define the main timeline     
+    myTimeline = [];
+
+    //Get subjective number
+    subNum = prompt("Enter the subject number.");
+
+    // While loop verification for entering correct condition
+    condition = false
+    while (condition == false){
+        subCond = prompt("What is the condition?"); // Get condition
+        subCond = subCond.toUpperCase();
+        if (subCond == 'A'){
+            condition = true
+        } else if (subCond == 'B'){
+            condition = true
+        } else if (subCond == 'C'){
+            condition = true
+        }
+    };
+    
+
+    // Add subject number and condition to data
+    jsPsych.data.addProperties({
+        subject: subNum,
+        condition: subCond
+    });
+    
+
+
+    
+    // *** Phase 1 - Study Phase
+
+    // Define welcomeBlock
+    var welcomeBlock = {
+        type: 'text',
+        text: "<font size = '5'> <br> <br>  <center> Welcome to the experiment. <br> <br> Please wait for the experimenter. </br> </br> </br> </br> </center>"
+    };
+
+    // Run welcomeBlock
+    myTimeline.push(welcomeBlock); // Add the welcomeBlock to the timeline
+
+    // Explains the first phase of the experiment
+    // This is same for every participant ==> no if/else condition needed
+
+    var studyInstructions = {
+        type: 'pcllab-instructions',
+        url: 'materials/instructions.json',
+        label: 'General'
+    };
+
+    // Run studyInstructtions
+    myTimeline.push(studyInstructions); 
+    
+    //Define studyTask
+    var studyTask = {
+        type: 'study-items',
+
+        frame_time: 1000,
+        blank_time: 1000,
+        stimuli: [
+            ["<center>       mbwa   : dog"],            // 1 // *** font size is 1-7
+            ["<center>       lulu   : pearl"],         // 2
+            ["<center>       wingu  : cloud"],        // 3
+            ["<center>       goti   : knee"],        // 4
+            ["<center>       yai    : egg"],        // 5
+            ["<center>       tabibu : doctor"],    // 6
+            ["<center>       sumu   : poison"],   // 7
+            ["<center>       kaa    : crab"],    // 8
+            ["<center>       leso   : scarf"],  // 9
+            ["<center>       ziwa   : lake"]   // 10
+        ]
+    };
+    
+    // Run studyTask
+    myTimeline.push(studyTask); //Run the FIRST study phase
+
+
+
+    // *** Phase 2 - Restudy / Grade with Key / Grade from Memory ***
+    
+    // Define gradingTask
+    var gradingTask = {
+        type: 'single-stim',
+        prompt: "F = INCORRECT <br>" + " <br> J = CORRECT",
+        choices: ['f', 'j'],
+        is_html: true,
+        timing_stim: 1000,
+        timing_response: 1000,
+        timeline: [                             //Type every Swahili-English word here
+            {stimulus: "<center> <br> mbwa   : dog"},
+            {stimulus: "<center> <br> lulu   : carpet"}, // incorrect pearl
+            {stimulus: "<center> <br> wingu  : cloud"},
+            {stimulus: "<center> <br> goti   : knee"},  
+            {stimulus: "<center> <br> yai    : barrel"}, // incorect egg
+            {stimulus: "<center> <br> tabibu : rumor"}, // incorrect doctor
+            {stimulus: "<center> <br> sumu   : poison"},
+            {stimulus: "<center> <br> kaa    : curtain"}, // incorrect crab
+            {stimulus: "<center> <br> leso   : scarf"},
+            {stimulus: "<center> <br> ziwa   : snow"} // incorrect lake
+        ]
+    };
+
+    // Instructions for Phase 2
+   
+    // Define restudyInstructions
+    var restudyInstructions = {
+        type: 'pcllab-instructions',
+        url: 'materials/instructions.json',
+        label: 'Restudy'
+    };
+
+    // Define instructions for grading with a key
+    var gradeKeyInstructions = {
+        type: 'pcllab-instructions',
+        url: 'materials/instructions.json',
+        label: 'keyGrade'
+    };  
+
+    // Define instructions for grading from memory
+        var gradeMemoryInstructions = {
+        type: 'pcllab-instructions',
+        url: 'materials/instructions.json',
+        label: 'memGrade'
+    };
+
+   // Condition A = "Restudy"
+    if (subCond == 'A') {
+        myTimeline.push(restudyInstructions);      // Presents the restudy instructions
+        myTimeline.push(studyTask);               //  Studyx2 
+        myTimeline.push(restudyInstructions);    //   Presents the restudy instructions
+        myTimeline.push(studyTask);             //    Studyx3
+        myTimeline.push(restudyInstructions);  //     Presents the restudy instructions
+        myTimeline.push(studyTask);           //      Studyx4
+
+    // Condition B = Grades w/ Key (Elaborative Restudying?)
+    } else if (subCond == 'B') {
+
+        myTimeline.push(gradeKeyInstructions);      // Presents the instructions for grading with a key
+        myTimeline.push(gradingTask);              //  Gradingx1
+        myTimeline.push(restudyInstructions);     //   Presents the restudy instructions
+        myTimeline.push(studyTask);              //    Studyx2
+        myTimeline.push(gradeKeyInstructions);  //     Presents the instructions for grading with a key
+        myTimeline.push(gradingTask);          //      Gradingx2
+    
+    // Condition C = Retrieval-Based Grading
+    } else if (subCond == 'C') {
+        myTimeline.push(gradeMemoryInstructions);       // Presents the instructions for grading from memory
+        myTimeline.push(gradingTask);                  //  memoryGradingx1
+        myTimeline.push(restudyInstructions);         //   Presents the restudy instructions
+        myTimeline.push(studyTask);                  //    Studyx2
+        myTimeline.push(gradeMemoryInstructions);   //     Presents the instructions for grading from memory
+        myTimeline.push(gradingTask);              //      memoryGradingx2
+
+    } else {
+        alert("Invalid Subject Condition");
+    };
+
+    // *** Phase 3 *** Recall
+    // might want this to be separate file or a different condition
+
+    var recallInstructions = {
+    type: 'pcllab-instructions',
+    url: 'materials/instructions.json',
+    label: 'Recall'
+    };
+
+    // run recallInstructions
+    myTimeline.push(recallInstructions);
+    
+    // Define recallTask
+    var recallTask = {
+        type: 'pcllab-short-answer',
+        minimum_time: 1000 * 10,
+        show_progress: false,
+        url: 'materials/short-answer-questions.json',
+        label: "label1"
+    };
+
+    // runs the recall task
+    myTimeline.push(recallTask);
+
+
+
+    // Experiment GO
+    jsPsych.init({
+        display_element: $("div#experiment_container"),
+        timeline: myTimeline,
+        fullscreen: false,
+        on_finish: function () {
+            jsPsych.data.displayData();
+        }
+    })
+
+
+</script>
+</html>
